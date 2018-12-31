@@ -11,6 +11,9 @@
 #include "lib/qtmaterialstyle.h"
 #include "qtmaterialflatbutton_internal.h"
 
+
+#define RIPPLE_SPEED_FACTOR 4
+
 /*!
  *  \class QtMaterialFlatButtonPrivate
  *  \internal
@@ -523,8 +526,8 @@ void QtMaterialFlatButton::mousePressEvent(QMouseEvent *event)
         ripple->setRadiusEndValue(radiusEndValue);
         ripple->setOpacityStartValue(0.35);
         ripple->setColor(foregroundColor());
-        ripple->radiusAnimation()->setDuration(600);
-        ripple->opacityAnimation()->setDuration(1300);
+        ripple->radiusAnimation()->setDuration(600/RIPPLE_SPEED_FACTOR);
+        ripple->opacityAnimation()->setDuration(1300/RIPPLE_SPEED_FACTOR);
 
         d->rippleOverlay->addRipple(ripple);
     }
